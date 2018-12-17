@@ -197,7 +197,7 @@ GameObject:
   - component: {fileID: 590370496}
   - component: {fileID: 590370495}
   m_Layer: 0
-  m_Name: Plane
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -266,7 +266,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 590370494}
   m_LocalRotation: {x: -0, y: -0.7065666, z: -0, w: 0.70764667}
-  m_LocalPosition: {x: -0.0000006727561, y: 0.02, z: -7.18}
+  m_LocalPosition: {x: -0.0000006727561, y: 0.13, z: -7.18}
   m_LocalScale: {x: 3.6670833, y: 1, z: 4.113782}
   m_Children: []
   m_Father: {fileID: 0}
@@ -282,7 +282,7 @@ GameObject:
   - component: {fileID: 604210315}
   - component: {fileID: 604210314}
   m_Layer: 0
-  m_Name: Spot Light
+  m_Name: Spot Light 01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -298,7 +298,7 @@ Light:
   serializedVersion: 8
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 8
+  m_Intensity: 10
   m_Range: 12
   m_SpotAngle: 75
   m_CookieSize: 10
@@ -331,13 +331,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 604210313}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0.6785067, y: -0, z: -0, w: 0.7345943}
   m_LocalPosition: {x: 0.13, y: 9.12, z: -3.45}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 85.454, y: 0, z: 0}
 --- !u!1 &680059447
 GameObject:
   m_ObjectHideFlags: 0
@@ -613,7 +613,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 649f180061a599b4f8b41364c8e260fa, type: 3}
       propertyPath: m_Name
-      value: Frette (1)
+      value: Frette
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 649f180061a599b4f8b41364c8e260fa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
