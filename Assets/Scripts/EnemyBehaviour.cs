@@ -7,8 +7,7 @@ public class EnemyBehaviour : MonoBehaviour
     public float beatTempo;
     private float currentBeat;
     public int damagePoints;
-
-    public bool hasStarted;
+    public bool canBeKilled;
 
 	// Use this for initialization
 	void Start ()
@@ -19,16 +18,24 @@ public class EnemyBehaviour : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-		if(!hasStarted)
-        {
-            if(Input.anyKeyDown)
-            {
-                hasStarted = true;
-            }
-        }
-        else
-        {
-            transform.position -= new Vector3(0f, currentBeat * Time.deltaTime, 0f);
-        }
+        transform.position -= new Vector3(0f, 0f, currentBeat * Time.deltaTime);
 	}
+    
+
+    private void OnTriggerStay(Collider other)
+    {
+        if(other.CompareTag("TriggerStripe"))
+        {
+            canBeKilled = true;
+            Debug.Log("can be killed");
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("TriggerStripe"))
+        {
+            canBeKilled = false;
+        }
+    }
 }
