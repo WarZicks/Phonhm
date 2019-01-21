@@ -6,20 +6,26 @@ public class EnemyBehaviour : MonoBehaviour
 {
     private Vector2 startPosition;
     private Vector2 endPosition;
-    private float swipeDistanceThreshold = 50;
+    private float swipeDistanceMin = 50;
+    private float dragDistanceMin = 50;
 
     public float beatTempo;
     private float currentBeat;
     public int damagePoints;
     public bool canBeKilled, canBeDraged, canBeSwiped;
+    public bool isStandard;
 
     public enum EnemyClass {Standard, Swipe, Drag};
-    private EnemyClass enemyClass;
+    public EnemyClass enemyClass;
 
 	// Use this for initialization
 	void Start ()
     {
         currentBeat = beatTempo / 60f;
+        if (enemyClass == EnemyClass.Swipe)
+        {
+            isStandard = false;
+        }
 	}
 	
 	// Update is called once per frame
@@ -49,10 +55,25 @@ public class EnemyBehaviour : MonoBehaviour
     private void AnalyzeGesture(Vector2 start, Vector2 end)
     {
         // Distance
-        if (Vector2.Distance(start, end) > swipeDistanceThreshold)
+        if (Vector2.Distance(start, end) > swipeDistanceMin)
         {
-            enemyClass = EnemyClass.Standard;
+            if (enemyClass == EnemyClass.Swipe && isStandard == false)
+            {
+                isStandard = true;
+            }
         }
+        if (Mathf.Abs(end.x - start.x) > dragDistanceMin || Mathf.Abs(end.y - start.y) > dragDistanceMin)
+        {
+            if (enemyClass == EnemyClass.Drag)
+            {
+                DragEnemyMovement();
+            }
+        }
+    }
+
+    public void DragEnemyMovement()
+    {
+        Debug.Log("OOOOOOOOO");
     }
 
     // Deal damage to player
@@ -66,11 +87,10 @@ public class EnemyBehaviour : MonoBehaviour
     }
 
     // Kill enemy with click
-    private void OnMouseDown() 
+    private void OnMouseUp() 
     {
         if (canBeKilled)
         {
-            Debug.Log("Click");
             Destroy(gameObject);
         }
     }
@@ -84,7 +104,6 @@ public class EnemyBehaviour : MonoBehaviour
             {
                 case EnemyClass.Standard:
                     canBeKilled = true;
-                    Debug.Log("can be killed");
                     break;
                 case EnemyClass.Drag:
                     canBeDraged = true;
@@ -101,7 +120,20 @@ public class EnemyBehaviour : MonoBehaviour
     {
         if (other.CompareTag("TriggerStripe"))
         {
-            canBeKilled = false;
+            switch (enemyClass)
+            {
+                case EnemyClass.Standard:
+                    canBeKilled = false;
+                    break;
+                case EnemyClass.Drag:
+                    break;
+                case EnemyClass.Swipe:
+                    if (isStandard)
+                    {
+                        enemyClass = EnemyClass.Standard;
+                    }
+                    break;
+            }
         }
     }
 }

@@ -378,7 +378,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 680059447}
   m_LocalRotation: {x: 0.4385394, y: -0, z: -0, w: 0.898712}
-  m_LocalPosition: {x: 0, y: 4.32, z: -5.58}
+  m_LocalPosition: {x: 0.14, y: 4.32, z: -5.58}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -452,8 +452,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 761511882}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.14, y: 0.895, z: 1.59}
-  m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
+  m_LocalPosition: {x: -0.58, y: 0.895, z: 6.4466996}
+  m_LocalScale: {x: 0.5072384, y: 0.15, z: 0.5780282}
   m_Children:
   - {fileID: 1364665900}
   m_Father: {fileID: 1748258111}
@@ -544,6 +544,8 @@ MonoBehaviour:
   canBeKilled: 0
   canBeDraged: 0
   canBeSwiped: 0
+  isStandard: 0
+  enemyClass: 2
 --- !u!1 &763611909
 GameObject:
   m_ObjectHideFlags: 0
@@ -711,8 +713,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 793584161}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.14, y: 0.895, z: 3.07}
-  m_LocalScale: {x: 0.14999999, y: 0.14999999, z: 0.14999999}
+  m_LocalPosition: {x: 0.3, y: 0.895, z: 12.149799}
+  m_LocalScale: {x: 0.5072383, y: 0.14999999, z: 0.57802814}
   m_Children:
   - {fileID: 717585961}
   m_Father: {fileID: 1748258111}
@@ -734,6 +736,8 @@ MonoBehaviour:
   canBeKilled: 0
   canBeDraged: 0
   canBeSwiped: 0
+  isStandard: 0
+  enemyClass: 0
 --- !u!54 &793584164
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -830,8 +834,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 894029729}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.14, y: 0.895, z: 3.71}
-  m_LocalScale: {x: 0.14999999, y: 0.14999999, z: 0.14999999}
+  m_LocalPosition: {x: -0.47000003, y: 0.895, z: 14.6161}
+  m_LocalScale: {x: 0.5072383, y: 0.14999999, z: 0.57802814}
   m_Children:
   - {fileID: 763611910}
   m_Father: {fileID: 1748258111}
@@ -853,6 +857,8 @@ MonoBehaviour:
   canBeKilled: 0
   canBeDraged: 0
   canBeSwiped: 0
+  isStandard: 0
+  enemyClass: 0
 --- !u!54 &894029732
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1075,8 +1081,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1743450076}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.14, y: 0.895, z: 2.25}
-  m_LocalScale: {x: 0.14999999, y: 0.14999999, z: 0.14999999}
+  m_LocalPosition: {x: 1.02, y: 0.895, z: 8.99}
+  m_LocalScale: {x: 0.5072383, y: 0.14999999, z: 0.57802814}
   m_Children:
   - {fileID: 480583471}
   m_Father: {fileID: 1748258111}
@@ -1098,6 +1104,8 @@ MonoBehaviour:
   canBeKilled: 0
   canBeDraged: 0
   canBeSwiped: 0
+  isStandard: 0
+  enemyClass: 0
 --- !u!54 &1743450079
 Rigidbody:
   m_ObjectHideFlags: 0

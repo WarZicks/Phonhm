@@ -34,7 +34,6 @@ public class StripeBumping : MonoBehaviour {
         {
             _beatTimer -= _beatInterval;
             _beatFull = true;
-            Debug.Log("Bump");
             Bumping();
         }
     }
