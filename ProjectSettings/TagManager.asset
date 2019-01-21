@@ -9,6 +9,7 @@ TagManager:
   - TriggerStripe
   - EnemyParent
   - EnemySpawner
+  - FretteParent
   layers:
   - Default
   - TransparentFX

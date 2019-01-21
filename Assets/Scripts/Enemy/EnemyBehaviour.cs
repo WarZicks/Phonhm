@@ -21,6 +21,7 @@ public class EnemyBehaviour : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
+        beatTempo = GameObject.FindGameObjectWithTag("FretteParent").GetComponent<StripeBumping>().beatTempo;
         currentBeat = beatTempo / 60f;
         if (enemyClass == EnemyClass.Swipe)
         {
