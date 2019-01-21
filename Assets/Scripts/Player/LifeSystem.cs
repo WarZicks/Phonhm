@@ -21,6 +21,7 @@ public class LifeSystem : MonoBehaviour
     public void DoDamage ()
     {
         healthPoints -= GameObject.FindGameObjectWithTag("Enemy").GetComponent<EnemyBehaviour>().damagePoints;
+        Debug.Log("Player HP = " + healthPoints);
         PlayerDead();
     }
 
@@ -29,7 +30,7 @@ public class LifeSystem : MonoBehaviour
         if (healthPoints <= 0)
         {
             isDead = true;
-            Debug.Log("Dead FDP");
+            Debug.Log("Dead");
         }
     }
 }

@@ -12,7 +12,7 @@ public class EnemyBehaviour : MonoBehaviour
     public float beatTempo;
     private float currentBeat;
     public int damagePoints;
-    public bool canBeKilled, canBeDraged, canBeSwiped;
+    public bool canBeKilled, canBeDraged, canBeSwiped, isKilled;
     public bool isStandard;
 
     public enum EnemyClass {Standard, Swipe, Drag};
@@ -82,6 +82,7 @@ public class EnemyBehaviour : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             GameObject.FindGameObjectWithTag("Player").GetComponent<LifeSystem>().DoDamage();
+            GameObject.FindGameObjectWithTag("EnemySpawner").GetComponent<EnemySpawner>().SpawnAnEnemy();
             Destroy(gameObject);
         }
     }
@@ -91,6 +92,7 @@ public class EnemyBehaviour : MonoBehaviour
     {
         if (canBeKilled)
         {
+            GameObject.FindGameObjectWithTag("EnemySpawner").GetComponent<EnemySpawner>().SpawnAnEnemy();
             Destroy(gameObject);
         }
     }
@@ -104,6 +106,7 @@ public class EnemyBehaviour : MonoBehaviour
             {
                 case EnemyClass.Standard:
                     canBeKilled = true;
+                    Debug.Log("Clickable");
                     break;
                 case EnemyClass.Drag:
                     canBeDraged = true;

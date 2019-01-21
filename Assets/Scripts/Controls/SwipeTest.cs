@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScriptSample : MonoBehaviour {
+public class SwipeTest : MonoBehaviour {
+
+    
 
 	// Use this for initialization
 	void Start () {
