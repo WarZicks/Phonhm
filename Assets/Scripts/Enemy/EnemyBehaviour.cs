@@ -55,6 +55,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     private void AnalyzeGesture(Vector2 start, Vector2 end)
     {
+        Debug.Log(Mathf.Abs(end.x - start.x));
         // Distance
         if (Vector2.Distance(start, end) > swipeDistanceMin)
         {

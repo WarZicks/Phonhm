@@ -171,5 +171,6 @@ MonoBehaviour:
   canBeKilled: 0
   canBeDraged: 0
   canBeSwiped: 0
+  isKilled: 0
   isStandard: 0
   enemyClass: 0
