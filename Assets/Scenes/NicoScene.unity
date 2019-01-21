@@ -267,7 +267,6 @@ GameObject:
   - component: {fileID: 1883683325}
   - component: {fileID: 1883683324}
   - component: {fileID: 1883683323}
-  - component: {fileID: 1883683322}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -275,20 +274,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1883683322
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1883683321}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed2833c4e72b16444aa4daca6e168d5e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  beatTempo: 60
-  damagePoints: 0
-  hasStarted: 0
 --- !u!65 &1883683323
 BoxCollider:
   m_ObjectHideFlags: 0
