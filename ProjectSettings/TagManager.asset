@@ -10,6 +10,7 @@ TagManager:
   - EnemyParent
   - EnemySpawner
   - FretteParent
+  - UIManager
   layers:
   - Default
   - TransparentFX
