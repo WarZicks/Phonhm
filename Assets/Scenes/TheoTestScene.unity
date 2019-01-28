@@ -851,7 +851,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ef196cc65f513940bf8690245772d61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyPawn: {fileID: 1058010500186112, guid: 914841059c496c242ad3bb039da54a6c, type: 2}
+  maxTimeEnemyNormal: 5
+  minTimeEnemyNormal: 2
+  EnemyPawnNormal: {fileID: 1371467849641330, guid: a1009c25ff5976140be0c2134dd759fb,
+    type: 2}
+  maxTimeEnemySwipe: 7
+  minTimeEnemySwipe: 3
+  EnemyPawnSwipe: {fileID: 1740221997940294, guid: 11e23881a7bf95b4c9f6e7cea933c138,
+    type: 2}
+  maxTimeEnemyDrag: 9
+  minTimeEnemyDrag: 4
+  EnemyPawnDrag: {fileID: 1371467849641330, guid: a1009c25ff5976140be0c2134dd759fb,
+    type: 2}
 --- !u!4 &1748258111
 Transform:
   m_ObjectHideFlags: 0
