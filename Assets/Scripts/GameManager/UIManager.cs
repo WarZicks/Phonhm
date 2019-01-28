@@ -25,6 +25,8 @@ public class UIManager : MonoBehaviour
 		
 	}
 
+    
+
     public void ActivateDeadMenu()
     {
         inGameUI.SetActive(false);
@@ -39,6 +41,7 @@ public class UIManager : MonoBehaviour
 
     public void OnClickedButtonPause()
     {
+        GameObject.FindGameObjectWithTag("Music").GetComponent<AudioSource>().Pause();
         inGameUI.SetActive(false);
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;
@@ -49,6 +52,7 @@ public class UIManager : MonoBehaviour
         inGameUI.SetActive(true);
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
+        GameObject.FindGameObjectWithTag("Music").GetComponent<AudioSource>().UnPause();
     }
 
     public void OnClickedButtonPauseOptions()
@@ -105,5 +109,6 @@ public class UIManager : MonoBehaviour
     public void OnClickedButtonShopPauseBack()
     {
         SceneManager.LoadScene("Main_Menu");
+        Time.timeScale = 1f;
     }
 }

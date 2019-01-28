@@ -90,7 +90,7 @@ public class EnemyBehaviour : MonoBehaviour
     }
 
     // Kill enemy with click
-    private void OnMouseUp() 
+    private void OnMouseDown() 
     {
         if (canBeKilled)
         {

@@ -11,6 +11,7 @@ TagManager:
   - EnemySpawner
   - FretteParent
   - UIManager
+  - Music
   layers:
   - Default
   - TransparentFX
