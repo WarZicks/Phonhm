@@ -34,6 +34,7 @@ public class UIManager : MonoBehaviour
     public void OnClickedButtonRestart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Time.timeScale = 1f;
     }
 
     public void OnClickedButtonPause()
