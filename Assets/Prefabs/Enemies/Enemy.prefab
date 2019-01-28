@@ -173,4 +173,4 @@ MonoBehaviour:
   canBeSwiped: 0
   isKilled: 0
   isStandard: 0
-  enemyClass: 0
+  enemyClass: 2

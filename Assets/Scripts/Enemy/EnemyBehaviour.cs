@@ -6,8 +6,8 @@ public class EnemyBehaviour : MonoBehaviour
 {
     private Vector2 startPosition;
     private Vector2 endPosition;
-    private float swipeDistanceMin = 50;
-    private float dragDistanceMin = 50;
+    private float swipeDistanceMin = 200f;
+    private float dragDistanceMin = 300f;
 
     public float beatTempo;
     private float currentBeat;
@@ -55,7 +55,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     private void AnalyzeGesture(Vector2 start, Vector2 end)
     {
-        Debug.Log(Mathf.Abs(end.x - start.x));
+        //Debug.Log(Mathf.Abs(end.x - start.x));
         // Distance
         if (Vector2.Distance(start, end) > swipeDistanceMin)
         {
@@ -64,11 +64,17 @@ public class EnemyBehaviour : MonoBehaviour
                 isStandard = true;
             }
         }
-        if (Mathf.Abs(end.x - start.x) > dragDistanceMin || Mathf.Abs(end.y - start.y) > dragDistanceMin)
+        //if (Mathf.Abs(end.x - start.x) > dragDistanceMin || Mathf.Abs(end.y - start.y) > dragDistanceMin)
+        if (Mathf.Abs(end.x - start.x) < Mathf.Abs(end.y - start.y))
         {
-            if (enemyClass == EnemyClass.Drag)
+            if (end.y - start.y > 0)
             {
-                DragEnemyMovement();
+                {
+                    if (enemyClass == EnemyClass.Drag)
+                    {
+                        DragEnemyMovement();
+                    }
+                }
             }
         }
     }
@@ -84,7 +90,6 @@ public class EnemyBehaviour : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             GameObject.FindGameObjectWithTag("Player").GetComponent<LifeSystem>().DoDamage();
-            GameObject.FindGameObjectWithTag("EnemySpawner").GetComponent<EnemySpawner>().SpawnAnEnemy();
             Destroy(gameObject);
         }
     }
@@ -94,7 +99,6 @@ public class EnemyBehaviour : MonoBehaviour
     {
         if (canBeKilled)
         {
-            GameObject.FindGameObjectWithTag("EnemySpawner").GetComponent<EnemySpawner>().SpawnAnEnemy();
             Destroy(gameObject);
         }
     }
