@@ -29,6 +29,7 @@ public class UIManager : MonoBehaviour
 
     public void ActivateDeadMenu()
     {
+        GameObject.FindGameObjectWithTag("Music").GetComponent<AudioSource>().Stop();
         inGameUI.SetActive(false);
         deadMenu.SetActive(true);
     }
