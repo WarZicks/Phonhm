@@ -861,7 +861,7 @@ MonoBehaviour:
     type: 2}
   maxTimeEnemyDrag: 9
   minTimeEnemyDrag: 4
-  EnemyPawnDrag: {fileID: 1371467849641330, guid: a1009c25ff5976140be0c2134dd759fb,
+  EnemyPawnDrag: {fileID: 1071197228335010, guid: 4e8f2f4bc0be7c141bd0cb9b27e6b6c5,
     type: 2}
 --- !u!4 &1748258111
 Transform:

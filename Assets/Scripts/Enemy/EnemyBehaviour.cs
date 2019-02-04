@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyBehaviour : MonoBehaviour
 {
+    Camera cam;
     private Vector2 startPosition;
     private Vector2 endPosition;
     private float swipeDistanceMin = 200f;
@@ -18,9 +19,12 @@ public class EnemyBehaviour : MonoBehaviour
     public enum EnemyClass {Standard, Swipe, Drag};
     public EnemyClass enemyClass;
 
+    private RaycastHit mousePosition;
+
 	// Use this for initialization
 	void Start ()
     {
+        cam = Camera.main;
         beatTempo = GameObject.FindGameObjectWithTag("FretteParent").GetComponent<StripeBumping>().beatTempo;
         currentBeat = beatTempo / 60f;
         if (enemyClass == EnemyClass.Swipe)
@@ -49,6 +53,24 @@ public class EnemyBehaviour : MonoBehaviour
                     endPosition = touch.position;
                     AnalyzeGesture(startPosition, endPosition);
                     break;
+            }
+            if(enemyClass == EnemyClass.Drag)
+            {
+                switch (touch.phase)
+                {
+                    case TouchPhase.Began:
+                        // Stockage du point de départ
+                        Debug.Log("Touch Drag ennemy");
+                        startPosition = touch.position;
+                        //transform.position = mousePosition.transform.position;
+                        break;
+                    case TouchPhase.Ended:
+                        // Stockage du point de fin
+                        Debug.Log("EndTouch Drag enemy");
+                        endPosition = touch.position;
+                        AnalyzeGesture(startPosition, endPosition);
+                        break;
+                }
             }
         }
     }
@@ -81,7 +103,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     public void DragEnemyMovement()
     {
-        Debug.Log("OOOOOOOOO");
+        Debug.Log("Dragged Enemy");
     }
 
     // Deal damage to player
@@ -97,6 +119,12 @@ public class EnemyBehaviour : MonoBehaviour
     // Kill enemy with click
     private void OnMouseDown() 
     {
+        RaycastHit hit;
+        if (!Physics.Raycast(cam.ScreenPointToRay(Input.mousePosition), out hit))
+            return; 
+        mousePosition = hit;
+        Debug.Log(mousePosition);
+
         if (canBeKilled)
         {
             Destroy(gameObject);
