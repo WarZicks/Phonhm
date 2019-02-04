@@ -12,6 +12,7 @@ TagManager:
   - FretteParent
   - UIManager
   - Music
+  - Shield
   layers:
   - Default
   - TransparentFX
