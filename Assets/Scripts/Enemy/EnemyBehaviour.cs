@@ -13,13 +13,15 @@ public class EnemyBehaviour : MonoBehaviour
     public float beatTempo;
     private float currentBeat;
     public int damagePoints;
-    public bool canBeKilled, canBeDraged, canBeSwiped, isKilled;
+    public bool canBeKilled, canBeDraged, canBeSwiped, isKilled, DragedSate;
     public bool isStandard;
 
     public enum EnemyClass {Standard, Swipe, Drag};
     public EnemyClass enemyClass;
 
     private RaycastHit mousePosition;
+
+    float distanceForDragEnemy, numberOfStripePassed;
 
 	// Use this for initialization
 	void Start ()
@@ -42,31 +44,32 @@ public class EnemyBehaviour : MonoBehaviour
         if (Input.touchCount == 1)
         {
             var touch = Input.touches[0];
-            switch (touch.phase)
-            {
-                case TouchPhase.Began:
-                    // Stockage du point de départ
-                    startPosition = touch.position;
-                    break;
-                case TouchPhase.Ended:
-                    // Stockage du point de fin
-                    endPosition = touch.position;
-                    AnalyzeGesture(startPosition, endPosition);
-                    break;
-            }
-            if(enemyClass == EnemyClass.Drag)
+            if (enemyClass == EnemyClass.Swipe)
             {
                 switch (touch.phase)
                 {
                     case TouchPhase.Began:
                         // Stockage du point de départ
-                        Debug.Log("Touch Drag ennemy");
+                        startPosition = touch.position;
+                        break;
+                    case TouchPhase.Ended:
+                        // Stockage du point de fin
+                        endPosition = touch.position;
+                        AnalyzeGesture(startPosition, endPosition);
+                        break;
+                }
+            }
+            if(enemyClass == EnemyClass.Drag && numberOfStripePassed > 1 && !DragedSate)
+            {
+                switch (touch.phase)
+                {
+                    case TouchPhase.Began:
+                        // Stockage du point de départ
                         startPosition = touch.position;
                         //transform.position = mousePosition.transform.position;
                         break;
                     case TouchPhase.Ended:
                         // Stockage du point de fin
-                        Debug.Log("EndTouch Drag enemy");
                         endPosition = touch.position;
                         AnalyzeGesture(startPosition, endPosition);
                         break;
@@ -81,11 +84,12 @@ public class EnemyBehaviour : MonoBehaviour
         // Distance
         if (Vector2.Distance(start, end) > swipeDistanceMin)
         {
-            if (enemyClass == EnemyClass.Swipe && isStandard == false)
+            if (enemyClass == EnemyClass.Swipe && !isStandard)
             {
                 isStandard = true;
             }
         }
+        
         //if (Mathf.Abs(end.x - start.x) > dragDistanceMin || Mathf.Abs(end.y - start.y) > dragDistanceMin)
         if (Mathf.Abs(end.x - start.x) < Mathf.Abs(end.y - start.y))
         {
@@ -99,12 +103,61 @@ public class EnemyBehaviour : MonoBehaviour
                 }
             }
         }
+        
     }
 
     public void DragEnemyMovement()
     {
-        Debug.Log("Dragged Enemy");
+        currentBeat *= -2;
+        numberOfStripePassed = 0;
+        DragedSate = true;
     }
+
+    void RestoreEnemyMovement()
+    {
+        currentBeat = beatTempo / 60f;
+        DragedSate = false;
+        canBeKilled = false;
+        numberOfStripePassed = 0;
+    }
+
+    private void OnMouseDrag()
+    {
+        /*
+        if (enemyClass == EnemyClass.Drag && canBeDraged)
+        {
+            currentBeat = 0f;
+            Vector3 point = Camera.main.ScreenToWorldPoint(
+                    new Vector3(
+                        (transform.position.x - Camera.main.transform.position.x),
+                        Input.mousePosition.y,
+                        (transform.position.z - Camera.main.transform.position.z)));
+
+            point.x = transform.position.x;
+            point.y = transform.position.z;
+            transform.position = point;
+            Vector3.ProjectOnPlane(point, GameObject.FindGameObjectWithTag("Ground").GetComponent<Transform>().position);
+            //transform.position = point;
+        }
+        */
+    }
+
+    /*
+    private void OnMouseUp()
+    {
+        if (enemyClass == EnemyClass.Drag)
+        {
+            if (canBeKilled)
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                currentBeat = beatTempo / 60f;
+            }
+        }
+    }
+    */
 
     // Deal damage to player
     private void OnTriggerEnter(Collider other)
@@ -118,13 +171,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     // Kill enemy with click
     private void OnMouseDown() 
-    {
-        RaycastHit hit;
-        if (!Physics.Raycast(cam.ScreenPointToRay(Input.mousePosition), out hit))
-            return; 
-        mousePosition = hit;
-        Debug.Log(mousePosition);
-
+    { 
         if (canBeKilled)
         {
             Destroy(gameObject);
@@ -140,10 +187,14 @@ public class EnemyBehaviour : MonoBehaviour
             {
                 case EnemyClass.Standard:
                     canBeKilled = true;
-                    Debug.Log("Clickable");
+
                     break;
                 case EnemyClass.Drag:
                     canBeDraged = true;
+                    if(numberOfStripePassed > 2)
+                    {
+                        canBeKilled = true;
+                    }
                     break;
                 case EnemyClass.Swipe:
                     canBeSwiped = true;
@@ -163,6 +214,13 @@ public class EnemyBehaviour : MonoBehaviour
                     canBeKilled = false;
                     break;
                 case EnemyClass.Drag:
+                    canBeDraged = false;
+                    numberOfStripePassed++;
+                    Debug.Log(numberOfStripePassed);
+                    if (numberOfStripePassed > 1 && DragedSate)
+                    {
+                        RestoreEnemyMovement();
+                    }
                     break;
                 case EnemyClass.Swipe:
                     if (isStandard)
