@@ -140,7 +140,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: a5d5c6a22e8decc40ac3e9a4367b9f6b, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -853,15 +853,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxTimeEnemyNormal: 5
   minTimeEnemyNormal: 2
-  EnemyPawnNormal: {fileID: 1371467849641330, guid: a1009c25ff5976140be0c2134dd759fb,
+  EnemyPawnNormal: {fileID: 1041008421617314, guid: a1009c25ff5976140be0c2134dd759fb,
     type: 2}
   maxTimeEnemySwipe: 7
   minTimeEnemySwipe: 3
-  EnemyPawnSwipe: {fileID: 1740221997940294, guid: 11e23881a7bf95b4c9f6e7cea933c138,
+  EnemyPawnSwipe: {fileID: 1779640948981784, guid: 11e23881a7bf95b4c9f6e7cea933c138,
     type: 2}
   maxTimeEnemyDrag: 9
   minTimeEnemyDrag: 4
-  EnemyPawnDrag: {fileID: 1071197228335010, guid: 4e8f2f4bc0be7c141bd0cb9b27e6b6c5,
+  EnemyPawnDrag: {fileID: 1351230370556582, guid: 4e8f2f4bc0be7c141bd0cb9b27e6b6c5,
     type: 2}
 --- !u!4 &1748258111
 Transform:

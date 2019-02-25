@@ -23,12 +23,24 @@ public class EnemyBehaviour : MonoBehaviour
 
     float distanceForDragEnemy, numberOfStripePassed;
 
+    public GameObject Swipe_Shield;
+    public GameObject MeshObject;
+    public GameObject ColliderObject;
+
+    private AudioSource _AS;
+    public AudioClip DragSound;
+    public AudioClip SwipeSound;
+    public AudioClip TapSound;
+    public AudioClip DeadSound;
+
+    
 	// Use this for initialization
 	void Start ()
     {
         cam = Camera.main;
         beatTempo = GameObject.FindGameObjectWithTag("FretteParent").GetComponent<StripeBumping>().beatTempo;
         currentBeat = beatTempo / 60f;
+        _AS = GetComponent<AudioSource>();
         if (enemyClass == EnemyClass.Swipe)
         {
             isStandard = false;
@@ -87,6 +99,12 @@ public class EnemyBehaviour : MonoBehaviour
             if (enemyClass == EnemyClass.Swipe && !isStandard)
             {
                 isStandard = true;
+                if(Swipe_Shield != null)
+                {
+                    Swipe_Shield.SetActive(false);
+                }
+                _AS.clip = SwipeSound;
+                _AS.Play();
             }
         }
         
@@ -108,6 +126,8 @@ public class EnemyBehaviour : MonoBehaviour
 
     public void DragEnemyMovement()
     {
+        _AS.clip = DragSound;
+        _AS.Play();
         currentBeat *= -2;
         numberOfStripePassed = 0;
         DragedSate = true;
@@ -174,7 +194,11 @@ public class EnemyBehaviour : MonoBehaviour
     { 
         if (canBeKilled)
         {
-            Destroy(gameObject);
+            _AS.clip = DeadSound;
+            _AS.Play();
+            Destroy(MeshObject);
+            Destroy(ColliderObject);
+            Destroy(gameObject,2f);
         }
     }
 
