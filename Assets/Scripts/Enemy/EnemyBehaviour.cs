@@ -34,6 +34,8 @@ public class EnemyBehaviour : MonoBehaviour
     public AudioClip DeadSound;
 
     public GameObject animDrag;
+    public GameObject animSwipe;
+    public GameObject animTape;
     
 	// Use this for initialization
 	void Start ()
@@ -106,6 +108,7 @@ public class EnemyBehaviour : MonoBehaviour
                 }
                 _AS.clip = SwipeSound;
                 _AS.Play();
+                animSwipe.SetActive(true);
             }
         }
         
@@ -198,6 +201,7 @@ public class EnemyBehaviour : MonoBehaviour
         {
             _AS.clip = DeadSound;
             _AS.Play();
+            animTape.SetActive(true);
             Destroy(MeshObject);
             Destroy(ColliderObject);
             Destroy(gameObject,2f);
