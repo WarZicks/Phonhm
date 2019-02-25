@@ -33,6 +33,7 @@ public class EnemyBehaviour : MonoBehaviour
     public AudioClip TapSound;
     public AudioClip DeadSound;
 
+    public GameObject animDrag;
     
 	// Use this for initialization
 	void Start ()
@@ -128,6 +129,7 @@ public class EnemyBehaviour : MonoBehaviour
     {
         _AS.clip = DragSound;
         _AS.Play();
+        animDrag.SetActive(true);
         currentBeat *= -2;
         numberOfStripePassed = 0;
         DragedSate = true;
