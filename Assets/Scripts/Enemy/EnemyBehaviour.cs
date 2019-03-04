@@ -35,7 +35,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     public GameObject animDrag;
     public GameObject animSwipe;
-    public GameObject animTape;
+    public GameObject animTape; 
     
 	// Use this for initialization
 	void Start ()
@@ -143,7 +143,7 @@ public class EnemyBehaviour : MonoBehaviour
         currentBeat = beatTempo / 60f;
         DragedSate = false;
         canBeKilled = false;
-        numberOfStripePassed = 0;
+        numberOfStripePassed = -1;
     }
 
     private void OnMouseDrag()
@@ -202,9 +202,10 @@ public class EnemyBehaviour : MonoBehaviour
             _AS.clip = DeadSound;
             _AS.Play();
             animTape.SetActive(true);
+            GetComponent<BoxCollider>().enabled = false;
             Destroy(MeshObject);
             Destroy(ColliderObject);
-            Destroy(gameObject,2f);
+            Destroy(gameObject,0.5f);
         }
     }
 
@@ -221,7 +222,7 @@ public class EnemyBehaviour : MonoBehaviour
                     break;
                 case EnemyClass.Drag:
                     canBeDraged = true;
-                    if(numberOfStripePassed > 2)
+                    if(DragedSate)
                     {
                         canBeKilled = true;
                     }

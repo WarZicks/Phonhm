@@ -70,7 +70,7 @@ public class UIManager : MonoBehaviour
 
     public void OnClickedButtonPlay()
     {
-        SceneManager.LoadScene("TheoTestScene");
+        SceneManager.LoadScene("MainScene");
     }
 
     public void OnClickedButtonPlayMusicSelection()

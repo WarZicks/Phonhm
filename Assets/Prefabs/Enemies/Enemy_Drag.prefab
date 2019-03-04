@@ -480,7 +480,7 @@ MonoBehaviour:
   DeadSound: {fileID: 8300000, guid: ef6c1e2da4578fd4f85e6adb34383c04, type: 3}
   animDrag: {fileID: 1432556509596820}
   animSwipe: {fileID: 0}
-  animTape: {fileID: 0}
+  animTape: {fileID: 1326577254775370, guid: 1648c4f34f0ed784dbd4be8b23bb736f, type: 2}
 --- !u!212 &212936459707486408
 SpriteRenderer:
   m_ObjectHideFlags: 1

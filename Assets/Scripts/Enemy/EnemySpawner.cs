@@ -23,6 +23,7 @@ public class EnemySpawner : MonoBehaviour
     private float timeEnemyDrag;
     public GameObject EnemyPawnDrag;
     
+    
     // Use this for initialization
     void Start ()
     {
@@ -39,6 +40,32 @@ public class EnemySpawner : MonoBehaviour
         timeEnemyNormal += Time.deltaTime;
         timeEnemySwipe += Time.deltaTime;
         timeEnemyDrag += Time.deltaTime;
+    }
+
+    // Update is called once per frame
+    void Update ()
+    {
+           
+    }
+
+    void SetRandomTimeNormal()
+    {
+        spawnTimeEnemyNormal = Random.Range(minTimeEnemyNormal, maxTimeEnemyNormal);
+    }
+
+    void SetRandomTimeSwipe()
+    {
+        spawnTimeEnemySwipe = Random.Range(minTimeEnemySwipe, maxTimeEnemySwipe);
+    }
+
+    void SetRandomTimeDrag()
+    {
+        spawnTimeEnemyDrag = Random.Range(minTimeEnemyDrag, maxTimeEnemyDrag);
+    }
+
+
+    public void ChooseEnemyToSpawn()
+    {
         // Normal
         if (timeEnemyNormal >= spawnTimeEnemyNormal)
         {
@@ -65,42 +92,23 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update ()
-    {
-           
-    }
-
-    void SetRandomTimeNormal()
-    {
-        spawnTimeEnemyNormal = Random.Range(minTimeEnemyNormal, maxTimeEnemyNormal);
-    }
-
-    void SetRandomTimeSwipe()
-    {
-        spawnTimeEnemySwipe = Random.Range(minTimeEnemySwipe, maxTimeEnemySwipe);
-    }
-
-    void SetRandomTimeDrag()
-    {
-        spawnTimeEnemyDrag = Random.Range(minTimeEnemyDrag, maxTimeEnemyDrag);
-    }
-
     void SpawnObjectNormal()
     {
-        timeEnemyNormal = 0f;
-        Instantiate(EnemyPawnNormal, transform.position, Quaternion.identity);
+            timeEnemyNormal = 0f;
+            Instantiate(EnemyPawnNormal, transform.position, Quaternion.identity);
     }
 
     void SpawnObjectSwipe()
     {
-        timeEnemySwipe = 0f;
-        Instantiate(EnemyPawnSwipe, transform.position, Quaternion.identity);
+            timeEnemySwipe = 0f;
+            Instantiate(EnemyPawnSwipe, transform.position, Quaternion.identity);
     }
+
 
     void SpawnObjectDrag()
     {
-        timeEnemyDrag = 0f;
-        Instantiate(EnemyPawnDrag, transform.position, Quaternion.identity);
+            timeEnemyDrag = 0f;
+            Instantiate(EnemyPawnDrag, transform.position, Quaternion.identity);
     }
+    
 }
