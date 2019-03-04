@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     #region Singleton
-    private GameManager Singleton;
+    public static GameManager Singleton;
 
     private void Awake()
     {
@@ -57,22 +57,16 @@ public class GameManager : MonoBehaviour
 
     public void EarnPoints ()
     {
-        if (Input.GetKeyDown("f"))
-        {
             pointsToAdd = enemyPoints * combo;
             scoreFinal += pointsToAdd;
             combo += 1;
             Debug.Log(scoreFinal);
-        }
     }
 
     public void BreakCombo ()
     {
-        if (Input.GetKeyDown("g"))
-        {
             combo = 1;
             pointsToAdd = enemyPoints * combo;
             Debug.Log("Combo Cassé");
-        }
     }
 }
