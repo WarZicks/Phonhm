@@ -12,6 +12,7 @@ public class UIManager : MonoBehaviour
     public GameObject inGameUI;
     public GameObject pauseOptions;
     public GameObject deadMenu;
+    public GameObject splashScreen;
 
 	// Use this for initialization
 	void Start ()
@@ -25,7 +26,12 @@ public class UIManager : MonoBehaviour
 		
 	}
 
-    
+    public void SplashScreen ()
+    {
+        mainMenu.SetActive(true);
+        splashScreen.SetActive(false);
+    }
+
 
     public void ActivateDeadMenu()
     {
