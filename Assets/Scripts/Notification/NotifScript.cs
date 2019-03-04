@@ -12,7 +12,7 @@ namespace Assets.SimpleAndroidNotifications
 
         public void SendNotif()
         {
-            NotificationManager.Send(TimeSpan.FromSeconds(10), "PhonM", "An intruder is partying hard in your phone, you should check what is going on", Color.cyan);
+            NotificationManager.SendWithAppIcon(TimeSpan.FromSeconds(10), "PhonM", "An intruder is partying hard in your phone, you should check what is going on", Color.cyan, NotificationIcon.Star);
         }
 
 
