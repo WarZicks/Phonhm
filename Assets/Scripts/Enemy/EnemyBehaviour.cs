@@ -109,6 +109,7 @@ public class EnemyBehaviour : MonoBehaviour
                 _AS.clip = SwipeSound;
                 _AS.Play();
                 animSwipe.SetActive(true);
+                GameManager.Singleton.EarnPoints();
             }
         }
         
@@ -136,6 +137,7 @@ public class EnemyBehaviour : MonoBehaviour
         currentBeat *= -2;
         numberOfStripePassed = 0;
         DragedSate = true;
+        GameManager.Singleton.EarnPoints();
     }
 
     void RestoreEnemyMovement()
@@ -190,6 +192,7 @@ public class EnemyBehaviour : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             GameObject.FindGameObjectWithTag("Player").GetComponent<LifeSystem>().DoDamage();
+            GameManager.Singleton.BreakCombo();
             Destroy(gameObject);
         }
     }
@@ -203,6 +206,7 @@ public class EnemyBehaviour : MonoBehaviour
             _AS.Play();
             animTape.SetActive(true);
             GetComponent<BoxCollider>().enabled = false;
+            GameManager.Singleton.EarnPoints();
             Destroy(MeshObject);
             Destroy(ColliderObject);
             Destroy(gameObject,0.5f);
