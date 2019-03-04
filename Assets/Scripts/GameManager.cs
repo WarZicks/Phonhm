@@ -37,22 +37,22 @@ public class GameManager : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        /*
+        
         if (canSpawn0)
         {
             Spawner0.GetComponent<EnemySpawner>().ChooseEnemyToSpawn();
         }
-        */
+        
         if (canSpawn1)
         {
             Spawner1.GetComponent<EnemySpawner>().ChooseEnemyToSpawn();
         }
-        /*
+        
         if (canSpawn2)
         {
             Spawner2.GetComponent<EnemySpawner>().ChooseEnemyToSpawn();
         }
-        */
+        
     }
 
     public void EarnPoints ()

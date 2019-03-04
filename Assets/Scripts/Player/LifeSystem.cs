@@ -10,10 +10,16 @@ public class LifeSystem : MonoBehaviour
     public AudioClip Snd_TakeDamage;
     public AudioClip Snd_GameOver;
 
+    public GameObject[] Light_Bafle;
+    private Material M_Bafle;
+    public Material[] M_Light;
+    
+
 	// Use this for initialization
 	void Start ()
     {
         _AudioSource = GetComponent<AudioSource>();
+        //M_Bafle = Obj_Bafle.GetComponent<MeshRenderer>().materials.;
 	}
 	
 	// Update is called once per frame
@@ -31,7 +37,27 @@ public class LifeSystem : MonoBehaviour
         {
             Debug.Log("Player HP = " + healthPoints);
         }
+        ChangeBafleLightColor();
         PlayerDead();
+    }
+
+    void ChangeBafleLightColor()
+    {
+        switch (healthPoints)
+        {
+            case 2:
+                Light_Bafle[0].SetActive(false);
+                Light_Bafle[1].SetActive(true);
+                Light_Bafle[2].SetActive(false);
+                break;
+
+            case 1:
+                Light_Bafle[0].SetActive(false);
+                Light_Bafle[1].SetActive(false);
+                Light_Bafle[2].SetActive(true);
+                break;
+
+        }
     }
 
     public void PlayerDead ()
