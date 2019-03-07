@@ -59,13 +59,14 @@ public class EnemyBehaviour : MonoBehaviour
         if (Input.touchCount == 1)
         {
             var touch = Input.touches[0];
-            if (enemyClass == EnemyClass.Swipe)
+            if (enemyClass == EnemyClass.Swipe && startPosition.x == transform.position.x && startPosition.y == transform.position.z)
             {
                 switch (touch.phase)
                 {
                     case TouchPhase.Began:
                         // Stockage du point de départ
                         startPosition = touch.position;
+                        Debug.Log(startPosition);
                         break;
                     case TouchPhase.Ended:
                         // Stockage du point de fin

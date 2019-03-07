@@ -278,16 +278,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ef196cc65f513940bf8690245772d61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxTimeEnemyNormal: 10
-  minTimeEnemyNormal: 5
+  maxTimeEnemyNormal: 13
+  minTimeEnemyNormal: 8
   EnemyPawnNormal: {fileID: 1041008421617314, guid: a1009c25ff5976140be0c2134dd759fb,
     type: 2}
-  maxTimeEnemySwipe: 13
-  minTimeEnemySwipe: 8
+  maxTimeEnemySwipe: 15
+  minTimeEnemySwipe: 11
   EnemyPawnSwipe: {fileID: 1779640948981784, guid: 11e23881a7bf95b4c9f6e7cea933c138,
     type: 2}
-  maxTimeEnemyDrag: 16
-  minTimeEnemyDrag: 10
+  maxTimeEnemyDrag: 18
+  minTimeEnemyDrag: 13
   EnemyPawnDrag: {fileID: 1351230370556582, guid: 4e8f2f4bc0be7c141bd0cb9b27e6b6c5,
     type: 2}
 --- !u!1 &92423627
@@ -1319,16 +1319,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ef196cc65f513940bf8690245772d61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxTimeEnemyNormal: 10
-  minTimeEnemyNormal: 5
+  maxTimeEnemyNormal: 13
+  minTimeEnemyNormal: 8
   EnemyPawnNormal: {fileID: 1041008421617314, guid: a1009c25ff5976140be0c2134dd759fb,
     type: 2}
-  maxTimeEnemySwipe: 13
-  minTimeEnemySwipe: 8
+  maxTimeEnemySwipe: 15
+  minTimeEnemySwipe: 11
   EnemyPawnSwipe: {fileID: 1779640948981784, guid: 11e23881a7bf95b4c9f6e7cea933c138,
     type: 2}
-  maxTimeEnemyDrag: 16
-  minTimeEnemyDrag: 10
+  maxTimeEnemyDrag: 18
+  minTimeEnemyDrag: 13
   EnemyPawnDrag: {fileID: 1351230370556582, guid: 4e8f2f4bc0be7c141bd0cb9b27e6b6c5,
     type: 2}
 --- !u!1001 &1023584018
