@@ -22,6 +22,8 @@ public class EnemySpawner : MonoBehaviour
     private float spawnTimeEnemyDrag;
     private float timeEnemyDrag;
     public GameObject EnemyPawnDrag;
+
+    private int numberChose;
     
     
     // Use this for initialization
@@ -30,9 +32,6 @@ public class EnemySpawner : MonoBehaviour
         SetRandomTimeNormal();
         SetRandomTimeSwipe();
         SetRandomTimeDrag();
-        timeEnemyNormal = minTimeEnemyNormal;
-        timeEnemySwipe = minTimeEnemySwipe;
-        timeEnemyDrag = minTimeEnemyDrag;
     }
 
     void FixedUpdate()
@@ -73,9 +72,10 @@ public class EnemySpawner : MonoBehaviour
             SetRandomTimeNormal();
             timeEnemySwipe -= 1f;
             timeEnemyDrag -= 1f;
+
         }
         // Swipe
-        else if (timeEnemySwipe >= spawnTimeEnemySwipe)
+        if (timeEnemySwipe >= spawnTimeEnemySwipe)
         {
             SpawnObjectSwipe();
             SetRandomTimeSwipe();
@@ -83,7 +83,7 @@ public class EnemySpawner : MonoBehaviour
             timeEnemyDrag -= 1f;
         }
         // Drag
-        else if (timeEnemyDrag >= spawnTimeEnemyDrag)
+        if (timeEnemyDrag >= spawnTimeEnemyDrag)
         {
             SpawnObjectDrag();
             SetRandomTimeDrag();
@@ -103,7 +103,6 @@ public class EnemySpawner : MonoBehaviour
             timeEnemySwipe = 0f;
             Instantiate(EnemyPawnSwipe, transform.position, Quaternion.identity);
     }
-
 
     void SpawnObjectDrag()
     {

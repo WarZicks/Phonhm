@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -15,6 +16,13 @@ public class UIManager : MonoBehaviour
     public GameObject splashScreen;
     public GameObject tuto;
 
+    public GameObject buttonTuto;
+
+    public Sprite tutoDisabled;
+    public Sprite tutoEnabled;
+
+    public bool tutoOn = true;
+
 	// Use this for initialization
 	void Start ()
     {
@@ -27,13 +35,26 @@ public class UIManager : MonoBehaviour
 		
 	}
 
+    public void OnClickTuto()
+    {
+        if (tutoOn == true)
+        {
+            tutoOn = false;
+            buttonTuto.GetComponent<Image>().sprite = tutoDisabled;
+        }
+        else
+        {
+            tutoOn = true;
+            buttonTuto.GetComponent<Image>().sprite = tutoEnabled;
+        }
+    }
+
     public void SplashScreen ()
     {
         mainMenu.SetActive(true);
         splashScreen.SetActive(false);
     }
-
-
+    
     public void ActivateDeadMenu()
     {
         GameObject.FindGameObjectWithTag("Music").GetComponent<AudioSource>().Stop();
@@ -78,6 +99,17 @@ public class UIManager : MonoBehaviour
     public void OnClickedButtonPlay()
     {
         SceneManager.LoadScene("MainScene");
+        if (tutoOn == true)
+        {
+            tuto.SetActive(true);
+            inGameUI.SetActive(false);
+        }
+        else if (tutoOn == false)
+        {
+            tuto.SetActive(false);
+            inGameUI.SetActive(true);
+            Time.timeScale = 1;
+        }
     }
 
     public void OnClickedButtonPlayMusicSelection()
