@@ -13,11 +13,12 @@ public class UIManager : MonoBehaviour
     public GameObject pauseOptions;
     public GameObject deadMenu;
     public GameObject splashScreen;
+    public GameObject tuto;
 
 	// Use this for initialization
 	void Start ()
     {
-		
+        Time.timeScale = 0;
 	}
 	
 	// Update is called once per frame
@@ -117,5 +118,12 @@ public class UIManager : MonoBehaviour
     {
         SceneManager.LoadScene("Main_Menu");
         Time.timeScale = 1f;
+    }
+
+    public void OnSkipTuto()
+    {
+        Time.timeScale = 1;
+        tuto.SetActive(false);
+        inGameUI.SetActive(true);
     }
 }
